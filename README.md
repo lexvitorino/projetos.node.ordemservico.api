@@ -1,2 +1,2 @@
 # projetos.node.ordemservico.api
-Projeto destinado para ordem de serviço (API)
+Interface api de gerenciamento do sistema de Ordem de Serviço
