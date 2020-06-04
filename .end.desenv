@@ -1,0 +1,31 @@
+APP_URL=http://localhost:3334/
+# NODE_ENV=production
+NODE_ENV=development
+
+# Auth
+
+APP_SECRET=bootcamptexcorretornode
+APP_EXP_DAYS=7d
+
+# Database
+
+DB_DIALECT=mysql
+DB_HOST=mi7dev.com.br
+DB_PORT=3306
+DB_USER=mi7devbr_alex
+DB_PASS=CLC0kPx3DPso
+DB_NAME=mi7devbr_teccorretor
+
+# Mail
+
+MAIL_HOST=mail.mi7dev.com.br
+MAIL_PORT=587
+MAIL_SECURE=false
+MAIL_USER=contato@mi7dev.com.br
+MAIL_PASS=LUc2QiRHJStDK2F9
+MAIL_FROM=Equipe TecCorretor <contato@mi7dev.com.br>
+
+# Sentry
+
+SENTRY_DSN=
+# SENTRY_DSN=https://fdff6e9f401145c4bdd39c0ba3d3ff42@sentry.io/1761371
