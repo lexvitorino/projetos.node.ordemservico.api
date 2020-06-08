@@ -3,7 +3,7 @@ Este projeto tem o intuito simples e rápido de geração de ordem de serviço. 
 
 - [NodeJs: Backend](https://github.com/lexvitorino/projetos.node.ordemservico.api)
 - [Angular2 v8: Frontend](https://github.com/lexvitorino/projetos.angular.ordemservico.site)
-- [ReactNative: Mobile](https://github.com/lexvitorino/projetos.reactnative.ordemservico.mobile)
+- [Flutter: Mobile](https://github.com/lexvitorino/projetos.flutter.ordemservico.mobile)
 
 ## Começando
 
