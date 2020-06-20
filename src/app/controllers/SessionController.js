@@ -99,9 +99,9 @@ class SessionController {
   }
 
   async unlock(req, res) {
-    const { email, password_lock, password, repassword } = req.body;
+    const { email, password, newpassword, repassword } = req.body;
 
-    if (password !== repassword) {
+    if (newpassword !== repassword) {
       return res.status(401).json({ error: 'Passwords não conferem.' });
     }
 
@@ -116,15 +116,11 @@ class SessionController {
       return res.status(401).json({ error: 'Usuário não encontrado.' });
     }
 
-    if (!(await user.checkPasswordLock(password_lock))) {
+    if (!(await user.checkPasswordLock(password))) {
       return res.status(401).json({ error: 'Código de acesso não confere.' });
     }
 
-    if (password !== repassword) {
-      return res.status(401).json({ error: 'Password não confere.' });
-    }
-
-    const pass = await bcrypt.hash(password, 8);
+    const pass = await bcrypt.hash(newpassword, 8);
 
     await User.update(
       {
