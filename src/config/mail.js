@@ -6,6 +6,9 @@ export default {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,
   },
+  tls: {
+    rejectUnauthorized: process.env.MAIL_SECURE === 'true',
+  },
   default: {
     from: process.env.MAIL_FROM,
   },
