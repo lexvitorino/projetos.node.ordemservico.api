@@ -21,6 +21,7 @@ class CustomerController {
         'neighborhood',
         'city',
         'state',
+        'complement',
       ],
       // limit: 20,
       // offset: (page - 1) * 20,
@@ -44,6 +45,7 @@ class CustomerController {
         'neighborhood',
         'city',
         'state',
+        'complement',
       ],
     });
 
@@ -95,6 +97,7 @@ class CustomerController {
         'neighborhood',
         'city',
         'state',
+        'complement',
       ],
     });
 
@@ -138,6 +141,7 @@ class CustomerController {
         'neighborhood',
         'city',
         'state',
+        'complement',
       ],
     });
 
