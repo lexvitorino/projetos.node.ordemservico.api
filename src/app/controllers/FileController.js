@@ -4,12 +4,12 @@ class FileController {
   async store(req, res) {
     const { originalname: name, filename: path } = req.file;
 
-    const file = File.create({
-      name,
-      path,
-    });
+    File.create({ name, path });
 
-    const data = await File.findByPk(id, {
+    const data = await File.findAll({
+      where: {
+        path,
+      },
       attributes: ['id', 'name', 'path'],
     });
 
