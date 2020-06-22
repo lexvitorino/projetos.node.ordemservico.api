@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
+import fs from 'fs';
+import { resolve } from 'path';
 import User from '../models/User';
+import Avatar from '../models/Avatar';
 import File from '../models/File';
 
 class UserController {
@@ -79,9 +82,18 @@ class UserController {
       return res.status(400).json({ error: 'Falha na validação.' });
     }
 
-    const { id, email } = req.body;
+    const { id, email, avartar_id } = req.body;
 
     const user = await User.findByPk(id);
+
+    if (avartar_id && user.avartar_id !== avartar_id) {
+      try {
+        await Avatar.destroy({ where: { id: avartar_id } });
+        const dir = resolve(__dirname, '..', '..', 'tmp', 'uploads');
+        fs.unlinkSync(`${dir}/${path}`);
+      } catch (err) {}
+    }
+
     if (email !== user.email) {
       const userExists = await User.findOne({ where: { email } });
       if (userExists) {
