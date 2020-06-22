@@ -8,6 +8,7 @@ import SubscriberController from './app/controllers/SubscriberController';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
+import CustomerController from './app/controllers/CustomerController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -35,5 +36,11 @@ routes.put('/subscribers', SubscriberController.update);
 routes.delete('/subscribers/:id', SubscriberController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
+
+routes.get('/customers', CustomerController.index);
+routes.get('/customers/:id', CustomerController.getById);
+routes.post('/customers', CustomerController.store);
+routes.put('/customers', CustomerController.update);
+routes.delete('/customers/:id', CustomerController.delete);
 
 export default routes;

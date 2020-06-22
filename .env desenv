@@ -1,0 +1,30 @@
+APP_URL=http://localhost:3334
+# NODE_ENV=production
+NODE_ENV=development
+
+# Auth
+
+APP_SECRET=complexnodesecret
+APP_EXP_DAYS=7d
+
+# Database
+
+DB_DIALECT=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASS=
+DB_NAME=mi7devbr_ordemservico
+
+# Mail
+
+MAIL_HOST=mail.mi7dev.com.br
+MAIL_PORT=587
+MAIL_SECURE=false
+MAIL_USER=contato@mi7dev.com.br
+MAIL_PASS=EG3VlX0fD7qD
+MAIL_FROM=Equipe TecCorretor <contato@mi7dev.com.br>
+
+# Sentry
+
+SENTRY_DSN=

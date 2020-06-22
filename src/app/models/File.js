@@ -1,4 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
+import fs from 'fs';
+import { resolve } from 'path';
 
 class File extends Model {
   static init(sequelize) {
@@ -19,6 +21,16 @@ class File extends Model {
     );
 
     return this;
+  }
+
+  async unlink(avatar_id) {
+    const avatar = await File.findByPk(avatar_id);
+    const dir = resolve(__dirname, '..', '..', '..', 'tmp', 'uploads');
+    fs.unlink(`${dir}\\${avatar.path}`, async err => {
+      if (!err) {
+        await File.destroy({ where: { id: avatar_id } });
+      }
+    });
   }
 }
 
