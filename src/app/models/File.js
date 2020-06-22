@@ -25,12 +25,14 @@ class File extends Model {
 
   async unlink(avatar_id) {
     const avatar = await File.findByPk(avatar_id);
-    const dir = resolve(__dirname, '..', '..', '..', 'tmp', 'uploads');
-    fs.unlink(`${dir}\\${avatar.path}`, async err => {
-      if (!err) {
-        await File.destroy({ where: { id: avatar_id } });
-      }
-    });
+    if (avatar) {
+      const dir = resolve(__dirname, '..', '..', '..', 'tmp', 'uploads');
+      fs.unlink(`${dir}\\${avatar.path}`, async err => {
+        if (!err) {
+          await File.destroy({ where: { id: avatar_id } });
+        }
+      });
+    }
   }
 }
 
