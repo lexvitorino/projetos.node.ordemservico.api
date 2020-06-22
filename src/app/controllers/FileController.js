@@ -4,7 +4,10 @@ class FileController {
   async store(req, res) {
     const { originalname: name, filename: path } = req.file;
 
-    File.create({ name, path });
+    const file = await File.create({
+      name,
+      path,
+    });
 
     const data = await File.findAll({
       where: {
@@ -13,7 +16,7 @@ class FileController {
       attributes: ['id', 'name', 'path'],
     });
 
-    return res.status(200).json(data);
+    return res.status(200).json(file);
   }
 }
 
