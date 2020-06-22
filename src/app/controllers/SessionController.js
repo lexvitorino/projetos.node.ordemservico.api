@@ -79,6 +79,18 @@ class SessionController {
 
     const subscriber = await Subscriber.findByPk(subscriber_id);
 
+    await Mail.sendMail({
+      to: `${name} <${email}>`,
+      subject: 'TEC Corretor',
+      template: 'unlock',
+      context: {
+        subscriber_name: subscriber.name,
+        name,
+        email,
+        password,
+      },
+    });
+
     return res.status(200).json({
       token: jwt.sign(
         {

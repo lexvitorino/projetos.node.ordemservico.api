@@ -9,7 +9,11 @@ class FileController {
       path,
     });
 
-    return res.status(200).json(file);
+    const data = await File.findByPk(id, {
+      attributes: ['id', 'name', 'path'],
+    });
+
+    return res.status(200).json(data);
   }
 }
 
