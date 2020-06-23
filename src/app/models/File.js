@@ -3,6 +3,8 @@ import fs from 'fs';
 import { resolve } from 'path';
 
 class File extends Model {
+  static FIELDS = ['id', 'path', 'url'];
+
   static init(sequelize) {
     super.init(
       {

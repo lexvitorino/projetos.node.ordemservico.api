@@ -8,21 +8,7 @@ class CustomerController {
       where: {
         subscriber_id: req.subscriberId,
       },
-      attributes: [
-        'id',
-        'name',
-        'document',
-        'inscription',
-        'email',
-        'telephone',
-        'zip_code',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'state',
-        'complement',
-      ],
+      attributes: Customer.FIELDS,
       // limit: 20,
       // offset: (page - 1) * 20,
     });
@@ -32,21 +18,7 @@ class CustomerController {
 
   async getById(req, res) {
     const customer = await Customer.findByPk(req.params.id, {
-      attributes: [
-        'id',
-        'name',
-        'document',
-        'inscription',
-        'email',
-        'telephone',
-        'zip_code',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'state',
-        'complement',
-      ],
+      attributes: Customer.FIELDS,
     });
 
     return res.status(200).json(customer);
@@ -84,21 +56,7 @@ class CustomerController {
     }
 
     const customer = await Customer.findByPk(id, {
-      attributes: [
-        'id',
-        'name',
-        'document',
-        'inscription',
-        'email',
-        'telephone',
-        'zip_code',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'state',
-        'complement',
-      ],
+      attributes: Customer.FIELDS,
     });
 
     return res.status(200).json(customer);
@@ -128,21 +86,7 @@ class CustomerController {
     await Customer.update(req.body, { where: { id } });
 
     customer = await Customer.findByPk(id, {
-      attributes: [
-        'id',
-        'name',
-        'document',
-        'inscription',
-        'email',
-        'telephone',
-        'zip_code',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'state',
-        'complement',
-      ],
+      attributes: Customer.FIELDS,
     });
 
     return res.status(200).json(customer);

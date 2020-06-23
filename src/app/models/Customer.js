@@ -1,6 +1,23 @@
 import Sequelize, { Model } from 'sequelize';
 
 class Customer extends Model {
+  static FIELDS = [
+    'id',
+    'subscriber_id',
+    'name',
+    'document',
+    'inscription',
+    'email',
+    'telephone',
+    'zip_code',
+    'street',
+    'number',
+    'neighborhood',
+    'city',
+    'state',
+    'complement',
+  ];
+
   static init(sequelize) {
     super.init(
       {

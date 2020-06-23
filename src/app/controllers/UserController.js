@@ -7,12 +7,12 @@ class UserController {
     // const { page = 1 } = req.query;
     const users = await User.findAll({
       where: { subscriber_id: req.subscriberId },
-      attributes: ['id', 'name', 'email', 'avatar_id', 'permission'],
+      attributes: User.FIELDS,
       include: [
         {
           model: File,
           as: 'avatar',
-          attributes: ['id', 'path', 'url'],
+          attributes: File.FIELDS,
         },
       ],
       // limit: 20,
@@ -24,12 +24,12 @@ class UserController {
 
   async getById(req, res) {
     const user = await User.findByPk(req.params.id, {
-      attributes: ['id', 'name', 'email', 'avatar_id', 'permission'],
+      attributes: User.FIELDS,
       include: [
         {
           model: File,
           as: 'avatar',
-          attributes: ['id', 'path', 'url'],
+          attributes: File.FIELDS,
         },
       ],
     });
@@ -102,12 +102,12 @@ class UserController {
     });
 
     const data = await User.findByPk(id, {
-      attributes: ['id', 'name', 'email', 'avatar_id'],
+      attributes: User.FIELDS,
       include: [
         {
           model: File,
           as: 'avatar',
-          attributes: ['id', 'path', 'url'],
+          attributes: File.FIELDS,
         },
       ],
     });
