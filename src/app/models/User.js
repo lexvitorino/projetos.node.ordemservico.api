@@ -2,7 +2,7 @@ import Sequelize, { Model } from 'sequelize';
 import bcrypt from 'bcryptjs';
 
 class User extends Model {
-  static FIELDS = ['id', 'name', 'email', 'avatar_id', 'permission'];
+  static FIELDS = ['id', 'subscriber_id', 'name', 'email', 'avatar_id', 'permission'];
 
   static init(sequelize) {
     super.init(

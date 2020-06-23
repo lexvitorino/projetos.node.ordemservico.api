@@ -18,7 +18,7 @@ DB_NAME=mi7devbr_ordemservico
 
 # Mail
 
-MAIL_HOST=mail.mi7dev.com.br
+MAIL_HOST=localhost
 MAIL_PORT=587
 MAIL_SECURE=false
 MAIL_USER=contato@mi7dev.com.br
