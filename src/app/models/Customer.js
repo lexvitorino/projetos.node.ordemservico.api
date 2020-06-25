@@ -18,6 +18,8 @@ class Customer extends Model {
     'complement',
   ];
 
+  static SINGLE_FIELDS = ['id', 'name'];
+
   static init(sequelize) {
     super.init(
       {

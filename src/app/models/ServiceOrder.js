@@ -12,8 +12,9 @@ class ServiceOrder extends Model {
     'solution_description',
     'warranty_date',
     'review_date',
+    'labor_value',
     'parts_value',
-    'total_value'
+    'total_value',
   ];
 
   static init(sequelize) {
@@ -27,8 +28,9 @@ class ServiceOrder extends Model {
         problem_description: Sequelize.STRING,
         solution_description: Sequelize.STRING,
         warranty_date: Sequelize.DATE,
-        review_date: Sequelize.DECIMAL,
+        review_date: Sequelize.DATE,
         parts_value: Sequelize.DECIMAL,
+        labor_value: Sequelize.DECIMAL,
         total_value: Sequelize.DECIMAL,
       },
       {
@@ -46,7 +48,7 @@ class ServiceOrder extends Model {
     });
     this.belongsTo(models.User, {
       foreignKey: 'support_id',
-      as: 'user',
+      as: 'support',
     });
   }
 }

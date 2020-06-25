@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import ServiceOrder from '../models/ServiceOrder';
+import Customer from '../models/Customer';
+import User from '../models/User';
 
 class ServiceOrderController {
   async index(req, res) {
@@ -9,6 +11,18 @@ class ServiceOrderController {
         subscriber_id: req.subscriberId,
       },
       attributes: ServiceOrder.FIELDS,
+      include: [
+        {
+          model: Customer,
+          as: 'customer',
+          attributes: Customer.SINGLE_FIELDS,
+        },
+        {
+          model: User,
+          as: 'support',
+          attributes: User.SINGLE_FIELDS,
+        },
+      ],
       // limit: 20,
       // offset: (page - 1) * 20,
     });
@@ -19,6 +33,18 @@ class ServiceOrderController {
   async getById(req, res) {
     const serviceOrder = await ServiceOrder.findByPk(req.params.id, {
       attributes: ServiceOrder.FIELDS,
+      include: [
+        {
+          model: Customer,
+          as: 'customer',
+          attributes: Customer.SINGLE_FIELDS,
+        },
+        {
+          model: User,
+          as: 'support',
+          attributes: User.SINGLE_FIELDS,
+        },
+      ],
     });
 
     return res.status(200).json(serviceOrder);
