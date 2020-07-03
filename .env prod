@@ -1,6 +1,6 @@
-APP_URL=http://mi7dev.com.br:3334
-# NODE_ENV=production
-NODE_ENV=development
+APP_URL=https://mi7dev.com.br:3334
+NODE_ENV=production
+# NODE_ENV=development
 
 # Auth
 

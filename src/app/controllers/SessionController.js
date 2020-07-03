@@ -79,17 +79,21 @@ class SessionController {
 
     const subscriber = await Subscriber.findByPk(subscriber_id);
 
-    await Mail.sendMail({
-      to: `${name} <${email}>`,
-      subject: 'TEC Corretor',
-      template: 'unlock',
-      context: {
-        subscriber_name: subscriber.name,
-        name,
-        email,
-        password,
-      },
-    });
+    if (process.env.NODE_ENV !== 'development') {
+      await Mail.sendMail({
+        to: `${name} <${email}>`,
+        subject: 'TEC Corretor',
+        template: 'unlock',
+        context: {
+          subscriber_name: subscriber.name,
+          name,
+          email,
+          password,
+        },
+      });
+    } else {
+      console.log('GENERATE PASSWORD: ' + password);
+    }
 
     return res.status(200).json({
       token: jwt.sign(
@@ -128,7 +132,11 @@ class SessionController {
       return res.status(401).json({ error: 'Usuário não encontrado.' });
     }
 
-    if (!(await user.checkPasswordLock(password))) {
+    try {
+      if (!(await user.checkPasswordLock(password))) {
+        return res.status(401).json({ error: 'Código de acesso não confere.' });
+      }
+    } catch (error) {
       return res.status(401).json({ error: 'Código de acesso não confere.' });
     }
 
